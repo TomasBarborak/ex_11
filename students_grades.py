@@ -34,6 +34,15 @@ class StudentsGrades:
                 points_index.append(i)
         return points_index
 
+    def get_sorted(self):
+        scores = list(self.scores)
+        n = len(scores)
+        for i in range(n):
+            for j in range(0, n - i - 1):
+                if scores[j] > scores[j + 1]:
+                    scores[j], scores[j + 1] = scores[j + 1], scores[j]
+        return scores
+
 
 
 
@@ -44,3 +53,4 @@ if __name__ == "__main__":
     print(results.scores)  # [85, 42, 91, 67, 50, 73, 100, 38, 58]
     print(results.get_grade(index=1))
     print(results.find(100))
+    print(results.get_sorted())
